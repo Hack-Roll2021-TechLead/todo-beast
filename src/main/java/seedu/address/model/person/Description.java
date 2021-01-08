@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Person's address in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidAddress(String)}
+ * Represents a Task description in the to do list.
+ * Guarantees: immutable; is valid as declared in {@link #isValidDescription} (String)}
  */
-public class Title {
+public class Description {
 
-    public static final String MESSAGE_CONSTRAINTS = "Title can take any values, and it should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Description should be an elaboration of what needs to be done.";
 
     /*
      * The first character of the address must not be a whitespace,
@@ -17,41 +17,36 @@ public class Title {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
-    public final String title;
+    public final String desc;
 
-    /**
-     * Constructs an {@code Address}.
-     *
-     * @param title A valid task title.
-     */
-    public Title(String title) {
-        requireNonNull(title);
-        checkArgument(isValidAddress(title), MESSAGE_CONSTRAINTS);
-        this.title = title;
+    public Description(String desc) {
+        requireNonNull(desc);
+        checkArgument(isValidDescription(desc), MESSAGE_CONSTRAINTS);
+        this.desc = desc;
     }
 
     /**
-     * Returns true if a given string is a valid email.
+     * Returns true if a given string is a valid description.
      */
-    public static boolean isValidAddress(String test) {
+    public static boolean isValidDescription(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
     @Override
     public String toString() {
-        return title;
+        return desc;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Title // instanceof handles nulls
-                && title.equals(((Title) other).title)); // state check
+                || (other instanceof Description // instanceof handles nulls
+                && desc.equals(((Description) other).desc)); // state check
     }
 
     @Override
     public int hashCode() {
-        return title.hashCode();
+        return desc.hashCode();
     }
 
 }
