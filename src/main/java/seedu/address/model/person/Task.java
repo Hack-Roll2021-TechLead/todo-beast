@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import seedu.address.model.tag.Context;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -19,6 +20,8 @@ public class Task {
     private final Name name;
     private final Phone phone;
     private final Email email;
+
+    private Completed isCompleted;
 
     // Data fields
     private final Address address;
@@ -52,6 +55,8 @@ public class Task {
         return address;
     }
 
+    public Completed getIsCompleted() { return isCompleted; }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -64,7 +69,7 @@ public class Task {
      * Returns true if both persons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
-    public boolean isSamePerson(Task otherTask) {
+    public boolean isSameTask(Task otherTask) {
         if (otherTask == this) {
             return true;
         }
